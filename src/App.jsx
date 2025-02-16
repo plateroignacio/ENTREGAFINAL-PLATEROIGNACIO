@@ -1,15 +1,22 @@
-import NavBar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/Navbar/Navbar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <NavBar />
-      <ItemListContainer greeting="Bienvenido a GameHub, tu tienda de Gaming!" />
-    </div>
+      <div className="container my-5">
+        <Routes>
+          <Route path="/" element={<ItemListContainer greeting="Bienvenido a GameHub, tu tienda de Gaming!" />} />
+          <Route path="/category/:categoryId" element={<ItemListContainer />} />
+          <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
