@@ -6,7 +6,7 @@ const ItemQuantitySelector = ({ initialQuantity, onChange }) => {
   const handleIncrease = () => {
     setQuantity(prevQuantity => {
       const newQuantity = prevQuantity + 1;
-      onChange(newQuantity);  // Llamar la función onChange para actualizar el valor en el componente principal
+      onChange(newQuantity);  
       return newQuantity;
     });
   };
@@ -15,7 +15,7 @@ const ItemQuantitySelector = ({ initialQuantity, onChange }) => {
     if (quantity > 1) {
       setQuantity(prevQuantity => {
         const newQuantity = prevQuantity - 1;
-        onChange(newQuantity);  // Llamar la función onChange para actualizar el valor en el componente principal
+        onChange(newQuantity); 
         return newQuantity;
       });
     }
