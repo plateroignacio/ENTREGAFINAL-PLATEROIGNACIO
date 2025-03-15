@@ -1,4 +1,4 @@
-import { useCart } from '../context/CartContext';
+import { useCart } from '../CartWidget/CartContext';
 
 const Checkout = () => {
   const { cart, clearCart } = useCart();

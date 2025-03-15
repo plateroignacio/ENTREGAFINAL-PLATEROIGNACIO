@@ -1,4 +1,6 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
+import CartWidget from './CartWidget'; 
+
 
 const CartContext = createContext();
 
@@ -7,18 +9,18 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addItem = (item, quantity) => {
-    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+  const addItem = (product, quantity) => {
+    const existingItem = cart.find((item) => item.id === product.id);
     if (existingItem) {
       setCart(
-        cart.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem
+        cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
         )
       );
     } else {
-      setCart([...cart, { ...item, quantity }]);
+      setCart([...cart, { ...product, quantity }]);
     }
   };
 
@@ -36,3 +38,5 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+export default CartContext;

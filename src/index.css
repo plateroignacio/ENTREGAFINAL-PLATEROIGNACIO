@@ -1,85 +1,156 @@
+/* General Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-header {
-  background-color: #333;
-  padding: 15px;
-  color: white;
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  margin: 0 20px;
-}
-
-nav a {
-  color: white;
+a {
   text-decoration: none;
-  font-size: 18px;
+  color: inherit;
 }
 
-main {
-  text-align: center;
-  padding: 20px;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
 }
 
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.product-card {
-  background-color: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.product-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.product-card h2 {
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-
-.product-card p {
-  color: #666;
+.navbar a {
+  color: white;
+  margin: 0 10px;
   font-size: 1rem;
-  margin-top: 5px;
+  font-weight: bold;
 }
 
-.item-list-container .card {
-  margin: 10px;
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.item-list-container .card img {
+.navbar .cart-widget {
+  position: relative;
+}
+
+.navbar .cart-widget .badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 80px auto 20px; /* Margen extra para compensar el navbar */
+  padding: 20px;
+}
+
+/* Grid de productos */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: cover; /* Mantiene las proporciones sin distorsión */
+  border-bottom: 1px solid #ddd;
 }
 
-.item-list-container .card-body {
+.card-body {
+  padding: 15px;
   text-align: center;
 }
 
-.cart-widget {
-  cursor: pointer;
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
+.card-text {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}

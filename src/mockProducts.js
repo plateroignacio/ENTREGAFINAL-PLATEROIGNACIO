@@ -1,7 +1,8 @@
 const products = [
-  { id: "1", name: "The Last of Us Part II", price: 60, category: "ps5", image: "tlou2.jpg", description: "Juego de acción y aventura." },
-  { id: "2", name: "Halo Infinite", price: 55, category: "xbox", image: "halo.jpg", description: "Shooter en primera persona." },
-  { id: "3", name: "Cyberpunk 2077", price: 50, category: "pc", image: "cyberpunk.jpg", description: "RPG de mundo abierto." },
+  { id: "1", name: "Play Station 5", price: 1000, category: "ps5", image: "PS5.jpg", description: "LO MAS MODERNOS EN TECNOLOGIA" },
+  { id: "2", name: "XBOX SERIES X", price: 900, category: "xbox", image: "XBOX_SERIES_X.jpg", description: "LA MEJOR CONSOLA DE MICROSOFT" },
+  { id: "3", name: "DUALSENSE", price: 150, category: "ps5", image: "DUALSENSE.jpg", description: "EL MANDO MAS COMODO DEL MUNDO" },
+  { id: "4", name: "SET COMPUTADORA GAMER", price: 1500, category: "pc", image: "compugamer.jpeg", description: "LA MEJOR MAQUINA ACTUAL" },
 ];
 
 export const getProducts = (categoryId) => {

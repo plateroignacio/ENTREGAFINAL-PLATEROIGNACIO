@@ -1,12 +1,19 @@
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getProductById } from '../../mockProducts';
+import ItemDetail from './ItemDetail';
 
 function ItemDetailContainer() {
-  const { id } = useParams();  // Obtienes el id del item desde la URL
-  
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    getProductById(id).then((data) => setProduct(data));
+  }, [id]);
+
   return (
     <div>
-      <h2>Detalle del Producto: {id}</h2>
-      {/* Aquí mostrarías los detalles del producto con id */}
+      {product ? <ItemDetail product={product} /> : <p>Cargando producto...</p>}
     </div>
   );
 }
