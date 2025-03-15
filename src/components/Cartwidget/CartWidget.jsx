@@ -1,14 +1,17 @@
 import { FaShoppingCart } from 'react-icons/fa';
+import { useCart } from './CartContext';
+import { Link } from 'react-router-dom';
 
 const CartWidget = () => {
-  const itemCount = 3; 
+  const { cart } = useCart();
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <div className="cart-widget d-flex align-items-center text-white">
+    <Link to="/cart" className="cart-widget text-white">
       <FaShoppingCart size={30} />
-      {itemCount > 0 && <span className="badge bg-danger ms-2">{itemCount}</span>}
-    </div>
+      {totalItems > 0 && <span className="badge bg-danger ms-2">{totalItems}</span>}
+    </Link>
   );
-}
+};
 
 export default CartWidget;

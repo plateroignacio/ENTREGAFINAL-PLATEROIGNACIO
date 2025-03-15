@@ -1,8 +1,23 @@
-const mockProducts = [
-  { id: 1, name: 'PlayStation 5', description: 'Consola de última generación', price: 500, category: 'consolas', image: '/images/PS5.jpg' },
-  { id: 2, name: 'Xbox Series X', description: 'La consola más potente', price: 450, category: 'consolas', image: '/images/XBOX_SERIES_X.jpg' },
-  { id: 3, name: 'DualSense', description: 'Joystick innovador', price: 70, category: 'joysticks', image: '/images/DUALSENSE.jpg' },
-  { id: 4, name: 'Halo Infinite', description: 'Videojuego épico', price: 60, category: 'juegos', image: '/images/Halo.jpg' },
+const products = [
+  { id: "1", name: "The Last of Us Part II", price: 60, category: "ps5", image: "tlou2.jpg", description: "Juego de acción y aventura." },
+  { id: "2", name: "Halo Infinite", price: 55, category: "xbox", image: "halo.jpg", description: "Shooter en primera persona." },
+  { id: "3", name: "Cyberpunk 2077", price: 50, category: "pc", image: "cyberpunk.jpg", description: "RPG de mundo abierto." },
 ];
 
-export default mockProducts;
+export const getProducts = (categoryId) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(categoryId ? products.filter(p => p.category === categoryId) : products);
+    }, 1000);
+  });
+};
+
+export const getProductById = (id) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(products.find(p => p.id === id));
+    }, 1000);
+  });
+};
+
+export default products;
