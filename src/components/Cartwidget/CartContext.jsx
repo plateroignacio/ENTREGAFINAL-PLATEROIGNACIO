@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import CartWidget from './CartWidget'; 
-
+import { db } from "../../firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 
 const CartContext = createContext();
 
@@ -32,8 +32,26 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  const finalizePurchase = async (buyerInfo) => {
+    const order = {
+      buyer: buyerInfo,
+      items: cart,
+      total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+      date: new Date(),
+    };
+
+    try {
+      const docRef = await addDoc(collection(db, "orders"), order);
+      console.log("Orden creada con ID:", docRef.id);
+      clearCart(); 
+      return docRef.id; 
+    } catch (error) {
+      console.error("Error al guardar la orden:", error);
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart, finalizePurchase }}>
       {children}
     </CartContext.Provider>
   );

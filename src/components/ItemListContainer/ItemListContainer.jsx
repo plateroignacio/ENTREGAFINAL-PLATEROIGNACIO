@@ -1,15 +1,21 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getProducts } from '../../mockProducts';
-import ItemList from './ItemList';
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getProducts } from "../../firestore";
+import ItemList from "./ItemList";
 
 function ItemListContainer() {
   const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProducts(categoryId).then((data) => setProducts(data));
+    setLoading(true);
+    getProducts(categoryId)
+      .then((data) => setProducts(data))
+      .finally(() => setLoading(false));
   }, [categoryId]);
+
+  if (loading) return <p>Cargando productos...</p>;
 
   return (
     <div>
